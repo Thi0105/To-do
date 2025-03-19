@@ -30,6 +30,7 @@ todoRouter.post("/new", async (req, res) => {
 
 todoRouter.delete("/delete/:id", async(req, res) => {
     try {
+        const id = req.params.id
         const result = await query('DELETE FROM task WHERE id = $1', [id])
         res.status(200).json({id: id})
     } catch (error) {

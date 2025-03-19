@@ -10,16 +10,24 @@ input.disabled = true
 
 const renderTask = (task) => {
     const li = document.createElement('li')
-    li.setAttribute('class', 'list-group-item')
+    li.setAttribute('class', 'list-group-item text-start')
     li.setAttribute('data-key', task.getId().toString())
     renderSpan(li, task.getText())
     renderLink(li, task.getId())
     list.append(li)
-}
 
+}
 const renderSpan = (li, text) => {
     const span = li.appendChild(document.createElement('span'))
     span.innerHTML = text
+
+    span.addEventListener("click", (event) => {
+        if (!li.classList.contains('task-done')) {
+            li.classList.toggle('task-done')
+        } else {
+            li.classList.toggle('task-done')
+        }
+    })
 }
 
 const renderLink = (li, id) => {
